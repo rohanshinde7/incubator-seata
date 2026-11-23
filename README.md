@@ -100,6 +100,58 @@ For more details about principle and design, please go to [Apache Seata wiki pag
 - **Apache Seata**: In October 2023, Seata entered the Apache Incubator.
 
 
+## Building and Testing from Source
+
+### Prerequisites
+
+- JDK 21
+- Git
+- Internet access to download Maven dependencies
+
+The repository includes a Maven Wrapper, so a separate Maven installation is not required.
+
+### Clone the Repository
+
+```bash
+git clone https://github.com/rohanshinde7/incubator-seata.git
+cd incubator-seata
+git checkout assignment2-work
+```
+
+### Build and Test
+
+Run the following command from the repository root.
+
+On Windows (PowerShell):
+
+```powershell
+.\mvnw.cmd clean verify
+```
+
+On macOS or Linux:
+
+```bash
+./mvnw clean verify
+```
+
+### Test the Refactored Module
+
+To run the SQL parser core module tests and build its required dependencies:
+
+Windows:
+
+```powershell
+.\mvnw.cmd -pl sqlparser/seata-sqlparser-core -am test
+```
+
+macOS or Linux:
+
+```bash
+./mvnw -pl sqlparser/seata-sqlparser-core -am test
+```
+
+The SQL parser core module was tested successfully with 76 tests passing and no failures or errors.
+
 
 ## Maven dependency
 
