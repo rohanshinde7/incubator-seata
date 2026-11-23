@@ -147,8 +147,10 @@ public interface EscapeHandler {
             return colName;
         }
         EscapeSymbol escapeChar = getEscapeSymbol();
-        if (colName.charAt(0) == escapeChar.getLeftSymbol()
-                && colName.charAt(colName.length() - 1) == escapeChar.getRightSymbol()) {
+        boolean hasOpeningEscape = colName.charAt(0) == escapeChar.getLeftSymbol();
+        boolean hasClosingEscape = colName.charAt(colName.length() - 1) == escapeChar.getRightSymbol();
+
+        if (hasOpeningEscape && hasClosingEscape) {
             // like "scheme"."id" `scheme`.`id`
             String str = escapeChar.getRightSymbol() + DOT + escapeChar.getLeftSymbol();
             int index = colName.indexOf(str);
