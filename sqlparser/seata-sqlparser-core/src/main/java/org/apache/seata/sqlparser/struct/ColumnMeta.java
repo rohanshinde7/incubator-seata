@@ -435,18 +435,7 @@ public class ColumnMeta {
             return false;
         }
         ColumnMeta columnMeta = (ColumnMeta) o;
-        if (!Objects.equals(columnMeta.tableCat, this.tableCat)) {
-            return false;
-        }
-        if (!Objects.equals(columnMeta.tableSchemaName, this.tableSchemaName)) {
-            return false;
-        }
-        if (!Objects.equals(columnMeta.tableName, this.tableName)) {
-            return false;
-        }
-        if (!Objects.equals(columnMeta.columnName, this.columnName)) {
-            return false;
-        }
+        if (hasDifferentTableIdentity(columnMeta)) return false;
         if (!Objects.equals(columnMeta.dataType, this.dataType)) {
             return false;
         }
@@ -496,6 +485,22 @@ public class ColumnMeta {
             return false;
         }
         return true;
+    }
+
+    private boolean hasDifferentTableIdentity(ColumnMeta columnMeta) {
+        if (!Objects.equals(columnMeta.tableCat, this.tableCat)) {
+            return true;
+        }
+        if (!Objects.equals(columnMeta.tableSchemaName, this.tableSchemaName)) {
+            return true;
+        }
+        if (!Objects.equals(columnMeta.tableName, this.tableName)) {
+            return true;
+        }
+        if (!Objects.equals(columnMeta.columnName, this.columnName)) {
+            return true;
+        }
+        return false;
     }
 
     @Override
