@@ -206,14 +206,14 @@ public class IndexMeta {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) {
+    public boolean equals(Object otherObject) {
+        if (this == otherObject) {
             return true;
         }
-        if (!(o instanceof IndexMeta)) {
+        if (!(otherObject instanceof IndexMeta)) {
             return false;
         }
-        IndexMeta indexMeta = (IndexMeta) o;
+        IndexMeta indexMeta = (IndexMeta) otherObject;
         if (!ArrayUtils.isEquals(indexMeta.values, this.values)) {
             return false;
         }
